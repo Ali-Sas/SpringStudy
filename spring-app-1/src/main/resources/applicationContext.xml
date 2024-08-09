@@ -7,12 +7,32 @@
  http://www.springframework.org/schema/context
  http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="musicBean"
+    <context:property-placeholder location="classpath:musicPlayer.properties"/> <!-- импортирование файла ключ - значение -->
+
+    <bean id="rockMusicBean"
           class="org.example.springcoure.RockMusic">
     </bean>
 
-    <bean id = "mediaPlayer"
-          class="org.example.springcoure.MediaPlayer">
-        <constructor-arg ref = "musicBean" />
+    <bean id="classicalMusicBean"
+          class="org.example.springcoure.ClassicalMusic">
     </bean>
+
+    <bean id="rapMusicBean"
+          class="org.example.springcoure.RapMusic">
+    </bean>
+
+    <bean id = "mediaPlayer"
+          class="org.example.springcoure.MusicPlayer">
+        <property name="musicList"> <!-- внедрение зависимостей в лист -->
+            <list>
+                <ref bean="classicalMusicBean"/>
+                <ref bean="rapMusicBean"/>
+                <ref bean="rockMusicBean"/>
+            </list>
+        </property>
+
+        <property name="name" value="Some name"/> <!-- внедрение зависимости -->
+        <property name="volume" value="${musicPlayer.volume}"/> <!-- использование значения -->
+    </bean>
+
 </beans>

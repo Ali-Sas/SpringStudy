@@ -8,9 +8,11 @@ public class TestSpring {
                 "applicationContext.xml"
         );
 
-        MediaPlayer mediaPlayer = context.getBean("mediaPlayer", MediaPlayer.class);
+        MusicPlayer mediaPlayer = context.getBean("mediaPlayer", MusicPlayer.class);
 
         mediaPlayer.play();
+
+        System.out.println(mediaPlayer.getName() + " Громкость: " + mediaPlayer.getVolume());
         context.close();
     }
 }

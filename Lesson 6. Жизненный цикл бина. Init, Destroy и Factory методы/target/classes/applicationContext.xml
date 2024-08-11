@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:musicPlayer.properties"/> <!-- импортирование файла ключ - значение -->
+
+
+    <bean id="classicalMusicBean"
+          class="org.example.springcoure.ClassicalMusic"
+          scope="prototype"
+          init-method="doMyInit"
+          factory-method="getClassicalMusic"
+          destroy-method="doMyDestroy">
+    </bean>
+
+<!--    <bean id="rockMusicBean"-->
+<!--          class="org.example.springcoure.RockMusic">-->
+<!--    </bean>-->
+
+<!--    <bean id="rapMusicBean"-->
+<!--          class="org.example.springcoure.RapMusic">-->
+<!--    </bean>-->
+
+<!--    <bean id = "mediaPlayer"-->
+<!--          class="org.example.springcoure.MusicPlayer"-->
+<!--          scope = "prototype"> &lt;!&ndash; использование скоупа, который всегда создаёт новый бин, не используя созданный до него &ndash;&gt;-->
+<!--        <property name="musicList"> &lt;!&ndash; внедрение зависимостей в лист &ndash;&gt;-->
+<!--            <list>-->
+<!--                <ref bean="classicalMusicBean"/>-->
+<!--                <ref bean="rapMusicBean"/>-->
+<!--                <ref bean="rockMusicBean"/>-->
+<!--            </list>-->
+<!--        </property>-->
+
+<!--        <property name="name" value="Some name"/> &lt;!&ndash; внедрение зависимости &ndash;&gt;-->
+<!--        <property name="volume" value="${musicPlayer.volume}"/> &lt;!&ndash; использование значения &ndash;&gt;-->
+<!--    </bean>-->
+
+</beans>
